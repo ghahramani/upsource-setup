@@ -1,0 +1,23 @@
+version: '2'
+services:
+
+    upsource:
+        image: infoowl/baseline:hepsiburada
+        container_name: upsource
+        user: infoowl
+        tty: true
+        stdin_open: true
+        command: /home/infoowl/upsource/docker/setup.sh
+        restart: always
+        ports:
+            - "9090:9090"
+        extra_hosts:
+            - "upsource:127.0.0.1"
+        volumes:
+            - /home/infoowl/projects/upsource-3:/home/infoowl/upsource
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+        ulimits:
+            memlock: -1
+            nofile: 100000
+            nproc: 32768
