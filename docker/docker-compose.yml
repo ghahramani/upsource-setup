@@ -14,7 +14,7 @@ services:
         extra_hosts:
             - "upsource:127.0.0.1"
         volumes:
-            - /home/infoowl/projects/upsource-3:/home/infoowl/upsource
+            - ../:/home/infoowl/upsource
             - /etc/localtime:/etc/localtime:ro
             - /etc/timezone:/etc/timezone:ro
         ulimits:
