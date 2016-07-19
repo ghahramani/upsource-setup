@@ -8,9 +8,10 @@ if [ "$CACHE" == "" ]; then
 	CACHE=upsource-$1.zip
 fi
 
-FILENAME="${CACHE%.*}"
-echo "Unziping $CACHE"
-unzip $CACHE &&
+FILENAME=$(basename "$CACHE")
+FILENAME="${FILENAME%.*}"
+echo "Unziping $FILENAME from $CACHE"
+unzip $CACHE -d ./ &&
 mv $FILENAME upsource &&
 cd upsource &&
 mkdir docker &&
